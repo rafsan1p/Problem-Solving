@@ -13,13 +13,28 @@ using namespace std;
 
 void solve(){
     int n; cin >> n;
-    vector<int> v(n);
+    vector<int> v(n), cnt(31, 0);
 
     read(i, 0, n){
         cin >> v[i];
+        read(j, 0, 31){
+            if((v[i] >> j) & 1) cnt[j]++;
+        }
     }
     
-    
+    read(k, 1, n+1){
+        bool flag = true;
+        read(j, 0, 31){
+            if(cnt[j] % k != 0){
+                flag = false;
+                break;
+            }
+        }
+        if(flag){
+            cout << k << " ";
+        }
+    }
+    cout << "\n";
 }
 
 int32_t main(){
